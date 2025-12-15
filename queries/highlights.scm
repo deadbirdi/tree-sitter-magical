@@ -15,6 +15,9 @@
 ; Numbers
 (number_literal) @number
 
+; Booleans
+(boolean_literal) @boolean
+
 ; Comments
 (line_comment) @comment
 
