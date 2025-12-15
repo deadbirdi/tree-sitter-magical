@@ -1,0 +1,41 @@
+{
+  "name": "tree-sitter-magical",
+  "version": "0.1.0",
+  "description": "Tree-sitter grammar for the Magical card game configuration language",
+  "main": "bindings/node",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sneakycrow/tree-sitter-magical.git"
+  },
+  "keywords": [
+    "tree-sitter",
+    "parser",
+    "magical",
+    "card-game",
+    "dsl"
+  ],
+  "author": "sneakycrow",
+  "license": "MIT",
+  "dependencies": {
+    "nan": "^2.17.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.8"
+  },
+  "scripts": {
+    "build": "tree-sitter generate && node-gyp build",
+    "test": "tree-sitter test"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.magical",
+      "file-types": [
+        "mgcl"
+      ],
+      "highlights": "queries/highlights.scm",
+      "injections": "queries/injections.scm",
+      "locals": "queries/locals.scm",
+      "tags": "queries/tags.scm"
+    }
+  ]
+}
