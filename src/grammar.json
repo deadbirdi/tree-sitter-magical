@@ -25,6 +25,30 @@
         },
         {
           "type": "SYMBOL",
+          "name": "zone_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "action_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "template_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "mechanic_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "win_condition_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "player_state_definition"
+        },
+        {
+          "type": "SYMBOL",
           "name": "variable_declaration"
         }
       ]
@@ -118,6 +142,148 @@
             "type": "SYMBOL",
             "name": "string_literal"
           }
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "object_literal"
+          }
+        }
+      ]
+    },
+    "zone_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "zone"
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string_literal"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "object_literal"
+          }
+        }
+      ]
+    },
+    "action_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "action"
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string_literal"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "object_literal"
+          }
+        }
+      ]
+    },
+    "template_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "template"
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string_literal"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "object_literal"
+          }
+        }
+      ]
+    },
+    "mechanic_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "mechanic"
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string_literal"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "object_literal"
+          }
+        }
+      ]
+    },
+    "win_condition_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "win_condition"
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string_literal"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "object_literal"
+          }
+        }
+      ]
+    },
+    "player_state_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "player_state"
         },
         {
           "type": "FIELD",

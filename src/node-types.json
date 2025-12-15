@@ -1,5 +1,31 @@
 [
   {
+    "type": "action_definition",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "object_literal",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string_literal",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "array_literal",
     "named": true,
     "fields": {},
@@ -187,6 +213,32 @@
     "fields": {}
   },
   {
+    "type": "mechanic_definition",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "object_literal",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string_literal",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "object_literal",
     "named": true,
     "fields": {},
@@ -199,6 +251,22 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "player_state_definition",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "object_literal",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -264,6 +332,10 @@
       "required": false,
       "types": [
         {
+          "type": "action_definition",
+          "named": true
+        },
+        {
           "type": "card_definition",
           "named": true
         },
@@ -276,7 +348,27 @@
           "named": true
         },
         {
+          "type": "mechanic_definition",
+          "named": true
+        },
+        {
+          "type": "player_state_definition",
+          "named": true
+        },
+        {
+          "type": "template_definition",
+          "named": true
+        },
+        {
           "type": "variable_declaration",
+          "named": true
+        },
+        {
+          "type": "win_condition_definition",
+          "named": true
+        },
+        {
+          "type": "zone_definition",
           "named": true
         }
       ]
@@ -286,6 +378,32 @@
     "type": "string_literal",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "template_definition",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "object_literal",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string_literal",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "variable_declaration",
@@ -324,6 +442,58 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "win_condition_definition",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "object_literal",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string_literal",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "zone_definition",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "object_literal",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string_literal",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -367,6 +537,10 @@
     "named": false
   },
   {
+    "type": "action",
+    "named": false
+  },
+  {
     "type": "card",
     "named": false
   },
@@ -399,8 +573,20 @@
     "named": false
   },
   {
+    "type": "mechanic",
+    "named": false
+  },
+  {
     "type": "number_literal",
     "named": true
+  },
+  {
+    "type": "player_state",
+    "named": false
+  },
+  {
+    "type": "template",
+    "named": false
   },
   {
     "type": "true",
@@ -408,6 +594,14 @@
   },
   {
     "type": "var",
+    "named": false
+  },
+  {
+    "type": "win_condition",
+    "named": false
+  },
+  {
+    "type": "zone",
     "named": false
   },
   {
