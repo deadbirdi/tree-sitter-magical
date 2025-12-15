@@ -11,6 +11,12 @@ module.exports = grammar({
         $.card_definition,
         $.game_definition,
         $.deck_definition,
+        $.zone_definition,
+        $.action_definition,
+        $.template_definition,
+        $.mechanic_definition,
+        $.win_condition_definition,
+        $.player_state_definition,
         $.variable_declaration,
       ),
 
@@ -38,6 +44,50 @@ module.exports = grammar({
         field("name", $.string_literal),
         field("body", $.object_literal),
       ),
+
+    // Zone definition: zone "Zone Name" { properties }
+    zone_definition: ($) =>
+      seq(
+        "zone",
+        field("name", $.string_literal),
+        field("body", $.object_literal),
+      ),
+
+    // Action definition: action "Action Name" { properties }
+    action_definition: ($) =>
+      seq(
+        "action",
+        field("name", $.string_literal),
+        field("body", $.object_literal),
+      ),
+
+    // Template definition: template "Template Name" { properties }
+    template_definition: ($) =>
+      seq(
+        "template",
+        field("name", $.string_literal),
+        field("body", $.object_literal),
+      ),
+
+    // Mechanic definition: mechanic "Mechanic Name" { properties }
+    mechanic_definition: ($) =>
+      seq(
+        "mechanic",
+        field("name", $.string_literal),
+        field("body", $.object_literal),
+      ),
+
+    // Win condition definition: win_condition "Name" { properties }
+    win_condition_definition: ($) =>
+      seq(
+        "win_condition",
+        field("name", $.string_literal),
+        field("body", $.object_literal),
+      ),
+
+    // Player state definition: player_state { properties }
+    player_state_definition: ($) =>
+      seq("player_state", field("body", $.object_literal)),
 
     // Variable declarations: let x = value
     variable_declaration: ($) =>
