@@ -5,7 +5,7 @@
   "main": "bindings/node",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sneakycrow/tree-sitter-magical.git"
+    "url": "https://github.com/deadbirdi/tree-sitter-magical.git"
   },
   "keywords": [
     "tree-sitter",
@@ -14,7 +14,7 @@
     "card-game",
     "dsl"
   ],
-  "author": "sneakycrow",
+  "author": "deadbirdi",
   "license": "MIT",
   "dependencies": {
     "nan": "^2.17.0"

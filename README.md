@@ -27,7 +27,7 @@ Magical is a domain-specific language for defining card games, from simple games
 
 ```bash
 # Clone the repository
-git clone https://github.com/sneakycrow/tree-sitter-magical.git
+git clone https://github.com/deadbirdi/tree-sitter-magical.git
 cd tree-sitter-magical
 
 # Install dependencies
@@ -44,7 +44,7 @@ npm test
 
 ### With Zed Editor
 
-This grammar is used by the [Magical language extension for Zed](https://github.com/sneakycrow/zed-magical).
+This grammar is used by the [Magical language extension for Zed](https://github.com/deadbirdi/zed-magical).
 
 ### With Other Editors
 
@@ -128,14 +128,12 @@ npx tree-sitter parse examples/test.mgcl
 6. Run `npm test` to verify
 7. Submit a pull request
 
-## Language Specification
 
-For the complete language specification, see the [Magical Language Spec](https://github.com/sneakycrow/mgcl/blob/main/SPEC.md).
 
 ## Related Projects
 
-- [Magical Language Compiler](https://github.com/sneakycrow/mgcl) - The main Magical language implementation
-- [Zed Magical Extension](https://github.com/sneakycrow/zed-magical) - Syntax highlighting for Zed editor
+- [Magical Language Compiler](https://github.com/deadbirdi/mgcl) - The main Magical language implementation
+- [Zed Magical Extension](https://github.com/deadbirdi/zed-magical) - Syntax highlighting for Zed editor
 
 ## License
 
