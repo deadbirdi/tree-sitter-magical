@@ -1,0 +1,11 @@
+card "Test Card" {
+  cost: 1,
+  type: "instant",
+  damage: 3
+}
+
+card "Another Card" {
+  suit: "hearts",
+  rank: "king",
+  value: 13
+}
