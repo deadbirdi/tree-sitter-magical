@@ -126,6 +126,10 @@ module.exports = grammar({
     // Expressions
     _expression: ($) =>
       choice(
+        $.binary_expression,
+        $.unary_expression,
+        $.closure_expression,
+        $.range_expression,
         $.identifier,
         $.string_literal,
         $.number_literal,
@@ -133,6 +137,99 @@ module.exports = grammar({
         $.object_literal,
         $.array_literal,
         $.function_call,
+        $.property_access,
+        $.method_call,
+      ),
+
+    // Binary expressions: expr op expr
+    binary_expression: ($) =>
+      choice(
+        prec.left(
+          6,
+          seq(
+            field("left", $._expression),
+            field("operator", choice("==", "!=", ">", "<", ">=", "<=")),
+            field("right", $._expression),
+          ),
+        ),
+        prec.left(
+          5,
+          seq(
+            field("left", $._expression),
+            field("operator", choice("&&", "||")),
+            field("right", $._expression),
+          ),
+        ),
+        prec.left(
+          4,
+          seq(
+            field("left", $._expression),
+            field("operator", choice("+", "-")),
+            field("right", $._expression),
+          ),
+        ),
+        prec.left(
+          3,
+          seq(
+            field("left", $._expression),
+            field("operator", choice("*", "/", "%")),
+            field("right", $._expression),
+          ),
+        ),
+      ),
+
+    // Range expressions: start..end
+    range_expression: ($) =>
+      prec.left(
+        7,
+        seq(field("start", $._expression), "..", field("end", $._expression)),
+      ),
+
+    // Unary expressions: -expr, +expr
+    unary_expression: ($) =>
+      prec.right(
+        8,
+        seq(
+          field("operator", choice("-", "+")),
+          field("operand", $._expression),
+        ),
+      ),
+
+    // Closure expressions: |param1, param2| expr
+    closure_expression: ($) =>
+      prec.right(
+        5,
+        seq(
+          "|",
+          optional(seq($.identifier, repeat(seq(",", $.identifier)))),
+          "|",
+          field("body", $._expression),
+        ),
+      ),
+
+    // Property access: obj.property
+    property_access: ($) =>
+      prec.left(
+        12,
+        seq(
+          field("object", $._expression),
+          ".",
+          field("property", $.identifier),
+        ),
+      ),
+
+    // Method calls: obj.method(args)
+    method_call: ($) =>
+      prec.left(
+        12,
+        seq(
+          field("object", $._expression),
+          ".",
+          field("method", $.identifier),
+          "(",
+          optional(seq($._expression, repeat(seq(",", $._expression)))),
+          ")",
+        ),
       ),
 
     // Function calls: func(args)

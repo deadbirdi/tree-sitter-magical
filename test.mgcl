@@ -1,11 +1,159 @@
+// Comprehensive test file showcasing all token types
+
+// Card definitions with various number types
 card "Test Card" {
-  cost: 1,
+  cost: 1.5,
   type: "instant",
-  damage: 3
+  damage: 3.0
 }
 
 card "Another Card" {
   suit: "hearts",
   rank: "king",
-  value: 13
+  rank_value: 13.0
+}
+
+card "Debuff Card" {
+  name: "Weakness",
+  damage: -2.5,
+  healing: -1.0,
+  modifier: -0.25
+}
+
+card "Lightning Spell" {
+  name: "Chain Lightning",
+  cost: 2.75,
+  damage: 4.5,
+  accuracy: 0.85,
+  critical_chance: 0.15,
+  abilities: ["flying", "haste"],
+  special: true
+}
+
+// Game definition with ranges and lambda expressions
+game "Poker Game" extends base_template {
+  players: 2..6,
+  starting_health: 20.0,
+  mana_regen: 0.5,
+  damage_multiplier: 1.25,
+  setup: |game| {
+    game.deck.shuffle();
+    game.players.forEach(|p| p.hand.add(game.deck.draw(5)));
+  },
+  win_conditions: [
+    best_hand_wins(),
+    last_player_standing()
+  ]
+}
+
+// Zone definitions with lambda acceptance rules
+zone "mana_pool" {
+  max_capacity: 10.0,
+  regen_rate: 1.5,
+  efficiency: 0.95,
+  accepts: |c, z| c.type == "mana" && z.size() < z.max_capacity
+}
+
+zone "penalty_zone" {
+  damage_reduction: -0.5,
+  healing_penalty: -2.0,
+  mana_drain: -1.25
+}
+
+// Action definitions with parameters and effects
+action "draw_card" {
+  parameters: [player, count],
+  preconditions: |p, n| p.deck.size() >= n,
+  effect: |p, n| {
+    p.hand.add(p.deck.draw(n));
+    p.actions_remaining -= 1;
+  }
+}
+
+action "deal_damage" {
+  parameters: [source, target, amount],
+  effect: |src, tgt, amt| {
+    tgt.health -= amt;
+    if (tgt.health <= 0) {
+      tgt.defeated = true;
+    }
+  }
+}
+
+// Template definition
+template "base_template" {
+  players: 2..4,
+  deck_size: 52,
+  hand_size: 7,
+  turn_limit: 10..50
+}
+
+template "card_game_base" {
+  players: 2..4,
+  deck_size: 52,
+  hand_size: 7
+}
+
+// Mechanic definition
+mechanic "combat_system" {
+  turn_phases: ["draw", "main", "combat", "end"],
+  combat_rules: {
+    attacker_advantage: true,
+    damage_prevention: false
+  }
+}
+
+// Win condition
+win_condition "elimination" {
+  check: |game_state| {
+    return game_state.players.filter(p => !p.defeated).length <= 1;
+  }
+}
+
+// Player state
+player_state {
+  health: 20,
+  mana: 0.0,
+  hand_size: 7,
+  defeated: false
+}
+
+// Variable declarations with all types
+let base_damage = 5.0;
+const critical_multiplier = 2.5;
+var current_mana = 7.25;
+
+// Negative expressions
+let damage_reduction = -1.5;
+const penalty_multiplier = -0.75;
+var debt = -10.0;
+
+// Boolean values
+let game_active = true;
+const debug_mode = false;
+var player_turn = true;
+
+// Array and object examples
+let deck_colors = ["red", "blue", "green", "white"];
+const mana_costs = {
+  common: 1.0,
+  uncommon: 2.5,
+  rare: 4.0,
+  mythic: 6.5
+};
+
+// Range examples for different contexts
+let small_game = 2..4;
+const tournament_size = 8..32;
+var current_round = 1..10;
+
+// More extends examples
+game "Simple Poker" extends base_template {
+  variant: "texas_holdem",
+  betting: true
+}
+
+game "Custom Game" extends card_game_base {
+  special_rules: ["no_wildcards", "double_draw"],
+  scoring: "highest_wins"
 }
